@@ -11,3 +11,4 @@ tags
 .idea
 django_baton.egg-info/
 .ropeproject
+/baton/static/baton/app/package-lock.json
