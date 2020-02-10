@@ -3,26 +3,26 @@ import 'bootstrap/dist/js/bootstrap'
 import './styles/baton.scss'
 
 import Dispatcher from 'js-event-dispatcher/dist/EventDispatcher'
-import Navbar from 'core/Navbar'
-import Footer from 'core/Footer'
-import Menu from 'core/Menu'
-import ActionResult from 'core/ActionResult'
-import PasswordChange from 'core/PasswordChange'
-import Analytics from 'core/Analytics'
-import Tabs from 'core/Tabs'
-import ChangeList from 'core/ChangeList'
-import ChangeForm from 'core/ChangeForm'
-import Filer from 'core/Filer'
+import Navbar from './core/Navbar'
+import Footer from './core/Footer'
+import Menu from './core/Menu'
+import ActionResult from './core/ActionResult'
+import PasswordChange from './core/PasswordChange'
+import Analytics from './core/Analytics'
+import Tabs from './core/Tabs'
+import ChangeList from './core/ChangeList'
+import ChangeForm from './core/ChangeForm'
+import Filer from './core/Filer'
 
 window.Baton = {
   intialized: false,
   init: function (config) {
-    console.info('Baton:', 'init')
-    this.initialized = true
-    let page = this.page()
+    console.info('Baton:', 'init');
+    this.initialized = true;
+    let page = this.page();
 
-    Navbar.init()
-    Dispatcher.emit('onNavbarReady')
+    Navbar.init();
+    Dispatcher.emit('onNavbarReady');
     if (page !== 'login' && !/_popup/.test(location.search)) {
       Menu.init(config, Dispatcher)
     }
@@ -39,14 +39,14 @@ window.Baton = {
     }
     Footer.init({
       remove: /_popup/.test(location.search)
-    })
+    });
 
     // tabs
     if (page === 'add_form' || page === 'change_form') {
       Tabs.init(Dispatcher)
     }
-    console.info('Baton:', 'ready')
-    document.body.className += ' baton-ready'
+    console.info('Baton:', 'ready');
+    document.body.className += ' baton-ready';
     Dispatcher.emit('onReady')
   },
   page: function () {
@@ -72,5 +72,5 @@ window.Baton = {
   },
   Analytics: Analytics,
   Dispatcher: Dispatcher
-}
-window.jQuery = jQuery
+};
+window.jQuery = jQuery;
