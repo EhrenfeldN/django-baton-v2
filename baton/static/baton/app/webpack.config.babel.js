@@ -27,14 +27,16 @@ const webpackConfig = {
     devtool: 'source-map'
 };
 module.exports = {
-    //...
+
     optimization: {
         minimizer: [
+            // JavaScript minify
             new UglifyJsPlugin({sourceMap: true})
         ]
     },
     module: {
         rules: [
+            // SCSS Loader
             {
                 test: /\.scss$/,
                 use: [
@@ -46,9 +48,19 @@ module.exports = {
                     },
                     {
                         loader: 'sass-loader'
+                    },
+
+                ]
+            },
+            // File loaders
+            {
+                test: /\.(eot|woff|woff2|ttf|svg|png|jpe?g|gif)(\?\S*)?$/,
+                use: [
+                    {
+                        loader: "url-loader"
                     }
                 ]
-            }
+            },
         ],
     },
 };
