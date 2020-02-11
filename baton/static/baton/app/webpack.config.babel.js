@@ -31,7 +31,10 @@ module.exports = {
     optimization: {
         minimizer: [
             // JavaScript minify
-            new UglifyJsPlugin({sourceMap: true})
+            new UglifyJsPlugin({
+                sourceMap: true,
+                extractComments: true
+            })
         ]
     },
     module: {
